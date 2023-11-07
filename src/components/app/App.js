@@ -1,41 +1,17 @@
 import './app.sass'
-import Zone from "../zone/zone";
-import {useEffect, useState} from "react";
+import Functional from "../Functional/functional";
+import Classes from "../Classes/Classes";
+import {Link, Route, Routes} from "react-router-dom";
 
 function App() {
-    const [arias, setArias] = useState([]);
-    const [things,setThings] = useState([]);
-    const fetchArias = async () => {
-        fetch("http://localhost:3002/areas")
-            .then((response) => response.json())
-            .then((data) => {
-                setArias(data)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-    const fetchThings = async () => {
-        fetch("http://localhost:3001/things")
-            .then((response) => response.json())
-            .then((data) => {
-                setThings(data)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-    useEffect(()=>{
-        fetchArias()
-        fetchThings()},[])
-    const ThingsInArias = arias.map(aria => {
-        const itemsInThisZone = things.filter(item => item.areaId === aria.areaId);
-        return { ...aria, items: itemsInThisZone };
-    });
-    const Zones = ThingsInArias.map(zone=>(<Zone name={zone.name} cells={zone.items}/>))
   return (
     <div className="App">
-        {Zones}
+       <Routes>
+           <Route path="functional" element={<Functional/>}/>
+           <Route path="classes" element={<Classes/>}/>
+       </Routes>
+        <Link  to={"/functional"}><button>Functional</button></Link>
+        <Link  to={"/classes"}><button>Classes</button></Link>
     </div>
   );
 }
