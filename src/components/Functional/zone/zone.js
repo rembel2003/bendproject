@@ -11,7 +11,7 @@ function Zone(props) {
         ...sortedCells.filter(cell => cell.items.length > 0),
         ...sortedCells.filter(cell => cell.items.length === 0)
     ]
-    const cells=sortedWithEmptyItemsAtEnd.map(cell =>(<CellParent sku={cell.sku} defaultSku={cell.defaultSku} joinedWith={cell.joinedWith} childrens={cell.items} status={cell.status}/>))
+    const cells=sortedWithEmptyItemsAtEnd.map(cell =>(<CellParent sku={cell.sku} defaultSku={cell.defaultSku} joinedWith={cell.joinedWith} childrens={cell.items} status={cell.status} key={cell.id}/>))
     return (
         <div className="zone">
             <h1>{props.name}</h1>

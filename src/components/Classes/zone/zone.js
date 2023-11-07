@@ -11,7 +11,7 @@ class Zone extends Component {
         ...this.sortedCells.filter(cell => cell.items.length > 0),
         ...this.sortedCells.filter(cell => cell.items.length === 0)
     ]
-     cells=this.sortedWithEmptyItemsAtEnd.map(cell =>(<CellParent sku={cell.sku} defaultSku={cell.defaultSku} joinedWith={cell.joinedWith} childrens={cell.items} status={cell.status}/>))
+     cells=this.sortedWithEmptyItemsAtEnd.map(cell =>(<CellParent sku={cell.sku} defaultSku={cell.defaultSku} joinedWith={cell.joinedWith} childrens={cell.items} status={cell.status} key={cell.id}/>))
 
     render(){
         return (

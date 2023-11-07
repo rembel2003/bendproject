@@ -6,7 +6,7 @@ class CellParent extends Component {
     constructor(props) {
         super(props);
     }
-     childrenCell = this.props.childrens.map(cell=>(<Cell sku={cell.sku} defaultSku={cell.defaultSku} joinedWith={cell.joinedWith}/>))
+     childrenCell = this.props.childrens.map(cell=>(<Cell sku={cell.sku} defaultSku={cell.defaultSku} joinedWith={cell.joinedWith} key={cell.id}/>))
      colorGenerator=(childrenArray)=>{
         if(childrenArray.every(child=>child.status==="open") && this.props.status==="open")
             return "open"
