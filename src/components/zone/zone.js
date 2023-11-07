@@ -1,0 +1,22 @@
+import React from 'react';
+import "./zone.sass"
+import CellParent from "../cellParent/cellParent";
+function Zone(props) {
+    const mainCells=props.cells.filter(cell=>cell.joinedWith===null)
+    const sortedCells = mainCells.map(aria => {
+        const itemsInThisCell = props.cells.filter(item => item.joinedWith === aria.id);
+        return { ...aria, items: itemsInThisCell };
+    });
+    const cells=sortedCells.map(cell =>(<CellParent sku={cell.sku} defaultSku={cell.defaultSku} joinedWith={cell.joinedWith} childrens={cell.items} status={cell.status}/>))
+    return (
+        <div className="zone">
+            <h1>{props.name}</h1>
+            <div className="cell-div">
+                {cells}
+            </div>
+
+        </div>
+    );
+}
+
+export default Zone;
