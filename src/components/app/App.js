@@ -1,7 +1,7 @@
 import './app.sass'
+import {Link, Route, Routes} from "react-router-dom";
 import Functional from "../Functional/functional";
 import Classes from "../Classes/Classes";
-import {Link, Route, Routes} from "react-router-dom";
 
 function App() {
   return (
